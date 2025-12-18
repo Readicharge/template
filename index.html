@@ -24,7 +24,7 @@
             overflow-x: hidden;
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
-            transition: background-color 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 3s cubic-bezier(0.23, 1, 0.32, 1);
             perspective: 2000px;
         }
 
@@ -59,13 +59,44 @@
             background-image: radial-gradient(circle at 60% 40%, rgba(163, 230, 53, 0.06) 0%, transparent 70%);
         }
 
-        /* --- Dramatic Background Themes --- */
-        body.theme-hero { background-color: #06061e; }
-        body.theme-light { background-color: #0a0e2e; }
-        body.theme-green { background-color: #041a0b; }
-        body.theme-dark { background-color: #0d0216; }
-        body.theme-about { background-color: #0a0e2e; }
-        body.theme-why { background-color: #041a0b; }
+        /* --- Smooth Professional Background Themes --- */
+        body.theme-hero { 
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(163, 230, 53, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(163, 230, 53, 0.02) 0%, transparent 50%),
+                linear-gradient(180deg, #06061e 0%, #08081f 100%);
+            transition: background 3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        body.theme-light { 
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(163, 230, 53, 0.04) 0%, transparent 60%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.01) 0%, transparent 50%),
+                linear-gradient(180deg, #08081f 0%, #0a0e2e 100%);
+            transition: background 3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        body.theme-green { 
+            background: 
+                radial-gradient(circle at 70% 30%, rgba(163, 230, 53, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 20% 60%, rgba(163, 230, 53, 0.03) 0%, transparent 70%),
+                linear-gradient(180deg, #0a0e2e 0%, #061b0d 100%);
+            transition: background 3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        body.theme-dark { 
+            background: linear-gradient(180deg, #061b0d 0%, #0b0318 100%);
+            transition: background 3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        body.theme-about { 
+            background: linear-gradient(180deg, #0b0318 0%, #0a0e2e 100%);
+            transition: background 3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        body.theme-why { 
+            background: linear-gradient(180deg, #0a0e2e 0%, #061b0d 100%);
+            transition: background 3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        body.theme-footer { 
+            background: linear-gradient(180deg, #061b0d 0%, #000000 100%);
+            transition: background 3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
 
         /* --- 3D Scroll Perspective Container --- */
         .scroll-3d-container {
@@ -111,7 +142,7 @@
             display: inline-block;
         }
        
-        .section-header { text-align: center; margin-bottom: 80px; max-width: 900px; margin: 0 auto 80px; }
+        .section-header { text-align: center; margin-bottom: 50px; max-width: 900px; margin: 0 auto 50px; }
 
         /* --- Navigation --- */
         nav {
@@ -162,7 +193,7 @@
         .hero-btns { display: flex; gap: 16px; justify-content: center; }
 
         /* --- Sections --- */
-        .section-padding { padding: 180px 0; position: relative; }
+        .section-padding { padding: 100px 0; position: relative; }
 
         .label {
             color: var(--brand-green); font-weight: 700; font-size: 0.9rem; text-transform: uppercase;
@@ -173,14 +204,21 @@
         .h2-title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 24px; }
         .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
         .bento-card {
-            background: var(--card-surface); border: 1px solid var(--card-border);
+            background: 
+                radial-gradient(circle at 80% 20%, rgba(163, 230, 53, 0.02) 0%, transparent 60%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+                var(--card-surface);
+            border: 1px solid var(--card-border);
             border-radius: var(--curve); padding: 48px; position: relative;
-            overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;
+            overflow: visible; display: flex; flex-direction: column; justify-content: space-between;
             transition: all 0.5s var(--ease-out);
         }
         .bento-card:hover {
             transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.08);
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(163, 230, 53, 0.05) 0%, transparent 60%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%),
+                var(--card-surface);
             border-color: var(--brand-green);
             box-shadow: 0 40px 80px rgba(0,0,0,0.6);
         }
@@ -212,7 +250,10 @@
             100% { transform: translateX(-50%); }
         }
         .testimonial-card {
-            background: var(--card-surface);
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(163, 230, 53, 0.02) 0%, transparent 60%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+                var(--card-surface);
             border: 1px solid var(--card-border);
             border-radius: var(--curve);
             padding: 48px;
@@ -237,11 +278,296 @@
         }
 
         /* --- Footer --- */
-        footer { padding: 120px 0 60px; border-top: 1px solid rgba(255,255,255,0.05); background: #000; }
+        footer { 
+            padding: 120px 0 60px; 
+            border-top: 1px solid rgba(163, 230, 53, 0.1); 
+            background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(163, 230, 53, 0.3) 50%, transparent 100%);
+        }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; }
         .footer-col h4 { color: #fff; margin-bottom: 24px; font-size: 1rem; font-weight: 600; text-transform: uppercase; }
         .footer-col a { text-decoration: none; color: var(--text-dim); transition: 0.2s; font-size: 0.95rem; }
         .footer-col a:hover { color: var(--brand-green); }
+
+        /* --- App Download Section --- */
+        .app-download-section {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 48px;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .app-download-section * {
+            pointer-events: none;
+        }
+        
+        .app-store-links,
+        .app-store-links * {
+            pointer-events: auto !important;
+        }
+        
+        .app-preview-image {
+            max-width: 320px;
+            height: auto;
+            border-radius: 16px;
+            opacity: 0.12;
+            transform: perspective(800px) rotateY(-15deg) rotateX(8deg) translateX(40px) translateZ(-50px);
+            transition: all 0.6s var(--ease-out);
+            pointer-events: none;
+            filter: blur(0.5px);
+        }
+        
+        .bento-card:hover .app-preview-image {
+            opacity: 0.2;
+            transform: perspective(800px) rotateY(-10deg) rotateX(5deg) translateX(20px) translateZ(-30px);
+            filter: blur(0px);
+        }
+        
+        .app-store-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+            pointer-events: auto;
+            z-index: 10;
+            position: absolute;
+            bottom: 48px;
+            right: 48px;
+        }
+        
+        .store-badge {
+            pointer-events: auto;
+            z-index: 11;
+            position: relative;
+        }
+        
+        .store-badge img {
+            height: 40px;
+            transition: transform 0.2s var(--ease-out);
+        }
+        
+        .store-badge:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Ensure content stays above background image but below buttons */
+        .bento-card > div:last-child {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Make sure app store buttons are always on top */
+        .bento-card .app-store-links {
+            z-index: 1000 !important;
+            position: absolute !important;
+        }
+        
+        .bento-card .store-badge {
+            z-index: 1001 !important;
+            position: relative !important;
+        }
+
+        /* --- Modal Styles --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s var(--ease-out);
+        }
+        
+        .modal-overlay.active {
+            opacity: 1 !important;
+            visibility: visible !important;
+            display: flex !important;
+            z-index: 99999 !important;
+        }
+        
+        .modal-content {
+            background: rgba(10, 14, 46, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid var(--brand-green);
+            border-radius: var(--curve);
+            padding: 48px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            z-index: 100000;
+            transform: translate(-50%, -50%) scale(0.9);
+            transition: all 0.3s var(--ease-out);
+            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+        }
+        
+        .modal-overlay.active .modal-content {
+            transform: translate(-50%, -50%) scale(1) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.2s var(--ease-out);
+        }
+        
+        .modal-close:hover {
+            color: var(--text-white);
+        }
+        
+        .modal-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .modal-header .label {
+            color: var(--brand-green);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+            display: inline-block;
+            background: rgba(163, 230, 53, 0.1);
+            padding: 6px 16px;
+            border-radius: 20px;
+        }
+        
+        .modal-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            color: var(--text-white);
+        }
+        
+        .modal-header p {
+            color: var(--text-dim);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* --- Form Styles --- */
+        .download-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-white);
+        }
+        
+        .form-group input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 14px 18px;
+            font-size: 1rem;
+            color: var(--text-white);
+            transition: all 0.3s var(--ease-out);
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--brand-green);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .form-group input::placeholder {
+            color: var(--text-dim);
+        }
+        
+        .btn-submit {
+            width: 100%;
+            background: var(--brand-green);
+            color: #000;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-out);
+            margin-top: 12px;
+        }
+        
+        .btn-submit:hover {
+            transform: scale(1.02);
+            background: var(--brand-green-hover);
+        }
+        
+        .form-success {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(163, 230, 53, 0.1);
+            border: 1px solid var(--brand-green);
+            border-radius: 12px;
+            text-align: center;
+            display: none;
+        }
+        
+        .form-success p {
+            color: var(--brand-green);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 0;
+        }
 
         @media (max-width: 1024px) {
             .bento-grid { grid-template-columns: 1fr 1fr; }
@@ -250,6 +576,183 @@
             .nav-links { display: none; }
             .testimonial-card { min-width: 360px; max-width: 360px; }
             .testimonials-track { gap: 24px; }
+        }
+        
+        /* --- EV Installation Card --- */
+        .ev-installation-card {
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(163, 230, 53, 0.04) 0%, transparent 60%),
+                radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+                linear-gradient(135deg, var(--card-surface) 0%, rgba(255, 255, 255, 0.06) 100%);
+            border: 1px solid var(--card-border);
+            border-radius: var(--curve);
+            padding: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .ev-installation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--brand-green) 0%, rgba(163, 230, 53, 0.5) 50%, var(--brand-green) 100%);
+            opacity: 0;
+            transition: opacity 0.4s var(--ease-out);
+        }
+
+        .ev-installation-card:hover::before {
+            opacity: 1;
+        }
+
+        .ev-installation-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.18) 100%);
+            border-color: rgba(163, 230, 53, 0.5);
+            box-shadow: 
+                0 50px 100px rgba(0,0,0,0.7),
+                0 0 0 1px rgba(163, 230, 53, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .ev-installation-card .label {
+            background: linear-gradient(90deg, rgba(163, 230, 53, 0.15) 0%, rgba(163, 230, 53, 0.25) 100%);
+            border: 1px solid rgba(163, 230, 53, 0.3);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
+            display: inline-block;
+        }
+
+        .ev-installation-card h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin: 24px 0;
+            color: var(--text-white);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .ev-installation-card h2 span {
+            background: linear-gradient(120deg, var(--brand-green) 0%, #bef264 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ev-installation-card p {
+            color: var(--text-dim);
+            font-size: 1.15rem;
+            line-height: 1.7;
+            max-width: 900px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        .ev-installation-card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--brand-green) 0%, #bef264 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 32px;
+            font-size: 2.5rem;
+            box-shadow: 0 20px 40px rgba(163, 230, 53, 0.3);
+            transition: all 0.4s var(--ease-out);
+        }
+
+        .ev-installation-card:hover .ev-installation-card-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 25px 50px rgba(163, 230, 53, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .ev-installation-card {
+                padding: 40px 32px;
+                max-width: 95%;
+            }
+            
+            .ev-installation-card h2 {
+                font-size: 2.2rem;
+            }
+            
+            .ev-installation-card p {
+                font-size: 1.05rem;
+            }
+
+            .ev-installation-card-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+                margin-bottom: 24px;
+            }
+        }
+
+        /* --- Location Content Section --- */
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .location-card {
+            background: 
+                radial-gradient(circle at 60% 40%, rgba(163, 230, 53, 0.03) 0%, transparent 70%),
+                linear-gradient(45deg, rgba(255, 255, 255, 0.01) 0%, transparent 50%),
+                var(--card-surface);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s var(--ease-out);
+        }
+
+        .location-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--brand-green);
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(163, 230, 53, 0.06) 0%, transparent 60%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.03) 100%),
+                var(--card-surface);
+        }
+
+        .location-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--brand-green);
+        }
+
+        .location-card p {
+            color: var(--text-dim);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .modal-content {
+                padding: 32px 24px;
+            }
         }
     </style>
 </head>
@@ -279,6 +782,8 @@
     </nav>
 
     <div class="ambient-glow"></div>
+    
+
 
     <div class="scroll-3d-container">
         <section class="hero" data-theme="theme-hero">
@@ -287,15 +792,29 @@
                 <h1 class="text-gradient">Precision EV <br><span class="text-shimmer">Infrastructure.</span></h1>
                 <p>Connect with vetted, licensed electricians for your EV charger installation. From residential garages to municipal fleets, we power the transition.</p>
                 <div class="hero-btns">
-                    <a href="#customers" class="btn-nav" style="padding: 16px 36px;">Find an Installer</a>
-                    <a href="#installers" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 16px 36px; border-radius: 50px; text-decoration: none;">Join Network</a>
+                    <button onclick="openModal('customerModal')" class="btn-nav" style="padding: 16px 36px; border: none; cursor: pointer;">Download Customer App</button>
+                    <button onclick="openModal('installerModal')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 16px 36px; border-radius: 50px; cursor: pointer;">Download Installer App</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- EV Charger Installation Card -->
+    <div class="scroll-3d-container">
+        <section style="padding: 60px 0;" data-theme="theme-hero">
+            <div class="container">
+                <div class="ev-installation-card reveal-on-scroll">
+                    <div class="ev-installation-card-icon">⚡</div>
+                    <span class="label">Local EV Charging Solutions</span>
+                    <h2>EV Charger Installation in <span>[Your Area]</span></h2>
+                    <p>ReadiCharge provides professional EV charger installation services across multiple markets. Our network of licensed, insured electricians specializes in residential, commercial, and municipal charging infrastructure. Whether you need a Level 2 home charger installation or a comprehensive commercial charging hub, our vetted professionals deliver quality workmanship with transparent pricing. We serve major metropolitan areas and are rapidly expanding to bring reliable EV charging solutions to communities nationwide.</p>
                 </div>
             </div>
         </section>
     </div>
 
     <div class="scroll-3d-container">
-        <section class="section-padding" id="customers" data-theme="theme-light">
+        <section class="section-padding" id="customers" data-theme="theme-light"></section>
             <div class="container">
                 <div class="section-header reveal-on-scroll">
                     <span class="label">For EV Owners</span>
@@ -304,6 +823,10 @@
                 </div>
                 <div class="bento-grid">
                     <div class="bento-card span-2 row-2 reveal-on-scroll">
+                        <div class="app-download-section">
+                            <img src="Customer.webp" alt="ReadiCharge Customer App" class="app-preview-image">
+                        </div>
+
                         <div>
                             <span class="bento-icon">🛡️</span>
                             <h3 class="bento-title" style="font-size: 2.5rem;">Safety & Quality Assurance.</h3>
@@ -313,6 +836,7 @@
                                 <div style="background: rgba(255,255,255,0.1); padding: 8px 20px; border-radius: 100px; font-size:0.9rem;">Insured</div>
                             </div>
                         </div>
+
                     </div>
                     <div class="bento-card reveal-on-scroll delay-100"><div><span class="bento-icon">⏱️</span><h3 class="bento-title">Swift Delivery</h3><p class="bento-text">Installers arrive within 48 hours of booking.</p></div></div>
                     <div class="bento-card reveal-on-scroll delay-200"><div><span class="bento-icon">📅</span><h3 class="bento-title">Smart Scheduling</h3><p class="bento-text">Choose a time that works best through our app.</p></div></div>
@@ -339,6 +863,10 @@
                     <div class="bento-card reveal-on-scroll"><div><span class="bento-icon">💳</span><h3 class="bento-title">Quick Payments</h3><p class="bento-text">Secure in-app processing. No more invoicing headaches.</p></div></div>
                     <div class="bento-card reveal-on-scroll delay-100"><div><span class="bento-icon">📈</span><h3 class="bento-title">No Marketing</h3><p class="bento-text">We bring the customers to you. Flow of job requests without ads.</p></div></div>
                     <div class="bento-card span-2 row-2 reveal-on-scroll delay-200">
+                        <div class="app-download-section">
+                            <img src="Installer.webp" alt="ReadiCharge Installer App" class="app-preview-image">
+                        </div>
+
                         <div>
                             <span class="bento-icon">🤝</span>
                             <h3 class="bento-title" style="font-size: 2.5rem;">Total Flexibility</h3>
@@ -349,6 +877,7 @@
                                 <li>✓ Predictable workflow</li>
                             </ul>
                         </div>
+
                     </div>
                     <div class="bento-card span-2 reveal-on-scroll delay-100"><div><span class="bento-icon">📝</span><h3 class="bento-title">Detail Upfront</h3><p class="bento-text">Assess and accept projects with ease based on customer details provided.</p></div></div>
                 </div>
@@ -361,33 +890,34 @@
         <section class="section-padding" id="about-us" data-theme="theme-about">
             <div class="container">
                 <div class="section-header reveal-on-scroll">
-                    <span class="label">About ReadiCharge</span>
-                    <h2 class="h2-title">Our Mission & Vision</h2>
-                    <p style="color: var(--text-dim); font-size: 1.25rem; max-width: 800px;">ReadiCharge is an online platform dedicated to streamlining electric vehicle charger installations, eliminating frustration for customers and providing steady work for licensed electricians.</p>
+                    <span class="label">Our Exclusive Experience</span>
+                    <h2 class="h2-title">Our Exclusive Experience</h2>
+                    <p style="color: var(--text-dim); font-size: 1.25rem; max-width: 800px;">Experience the ReadiCharge difference—where cutting-edge technology meets exceptional service to deliver a seamless EV charging installation journey.</p>
                 </div>
                 <div class="bento-grid">
                     <div class="bento-card span-2 reveal-on-scroll">
                         <div>
-                            <h3 class="bento-title">Our Mission</h3>
-                            <p class="bento-text">To be the easiest electric vehicle battery charger installation solution and earn a reputation as the world’s most trusted EV charger installation service provider.</p>
+                            <h3 class="bento-title">Seamless Booking</h3>
+                            <p class="bento-text">Schedule your installation in minutes through our intuitive app. Pick your preferred date and time, and we handle the rest.</p>
+                            
                         </div>
                     </div>
                     <div class="bento-card span-2 reveal-on-scroll delay-100">
                         <div>
-                            <h3 class="bento-title">Protecting the Planet</h3>
-                            <p class="bento-text">Reducing greenhouse gases from internal combustion engines is core to our goals. Switching to electric vehicles helps create a more sustainable future for current and coming generations.</p>
+                            <h3 class="bento-title">Expert Installers</h3>
+                            <p class="bento-text">Our network of professionals averages 13+ years of experience. Every installer is fully vetted, licensed, insured, and background-checked.</p>
                         </div>
                     </div>
                     <div class="bento-card span-2 reveal-on-scroll delay-200">
                         <div>
-                            <h3 class="bento-title">Safety First</h3>
-                            <p class="bento-text">All installers are licensed, insured, background-checked, and specialize exclusively in EV charging—ensuring jobs are done right the first time with an average of 13 years of experience.</p>
+                            <h3 class="bento-title">Transparent Pricing</h3>
+                            <p class="bento-text">No hidden fees or surprise charges. Get upfront quotes before booking so you know exactly what to expect.</p>
                         </div>
                     </div>
                     <div class="bento-card span-2 reveal-on-scroll delay-300">
                         <div>
-                            <h3 class="bento-title">Effortless Experience</h3>
-                            <p class="bento-text">We connect customers with certified professionals for residential, commercial, and municipal installations, making the transition to green mobility seamless.</p>
+                            <h3 class="bento-title">End-to-End Support</h3>
+                            <p class="bento-text">From initial consultation to final inspection, our team guides you through every step of your EV charger installation.</p>
                         </div>
                     </div>
                 </div>
@@ -469,25 +999,220 @@
         </section>
     </div>
 
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <div class="logo" style="margin-bottom: 25px;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brand-green)" style="margin-right:8px;"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
-                        READI<span>CHARGE</span>
-                    </div>
-                    <p>2510 S Telegraph Rd Ste L263<br>Bloomfield Hills, MI 48302</p>
-                    <p style="margin-top:20px">&copy; 2025 ReadiCharge LLC.</p>
+
+
+    <!-- Location Content Section -->
+    <div class="scroll-3d-container">
+        <section class="section-padding" id="location-content" data-theme="theme-dark">
+            <div class="container">
+                <div class="section-header reveal-on-scroll">
+                    <span class="label">Service Coverage</span>
+                    <h2 class="h2-title">Available in <span style="color:var(--brand-green)">Your Area</span></h2>
                 </div>
-                <div class="footer-col"><h4>Company</h4><ul style="list-style:none;"><li><a href="#">About Us</a></li><li><a href="#">Careers</a></li></ul></div>
-                <div class="footer-col"><h4>Installers</h4><ul style="list-style:none;"><li><a href="#">Join Network</a></li><li><a href="#">Portal</a></li></ul></div>
-                <div class="footer-col"><h4>Support</h4><ul style="list-style:none;"><li><a href="#">Help Center</a></li><li><a href="#">Contact</a></li></ul></div>
+                <div class="location-grid reveal-on-scroll">
+                    <div class="location-card">
+                        <h3>Michigan</h3>
+                        <p>Detroit Metro, Ann Arbor, Grand Rapids</p>
+                    </div>
+                    <div class="location-card">
+                        <h3>California</h3>
+                        <p>Los Angeles, San Francisco, San Diego</p>
+                    </div>
+                    <div class="location-card">
+                        <h3>Texas</h3>
+                        <p>Austin, Houston, Dallas</p>
+                    </div>
+                    <div class="location-card">
+                        <h3>More Coming Soon</h3>
+                        <p>Expanding nationwide in 2025</p>
+                    </div>
+                </div>
             </div>
+        </section>
+    </div>
+
+    <div class="scroll-3d-container">
+        <footer data-theme="theme-footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <div class="logo" style="margin-bottom: 25px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brand-green)" style="margin-right:8px;"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                            READI<span>CHARGE</span>
+                        </div>
+                        <p>2510 S Telegraph Rd Ste L263<br>Bloomfield Hills, MI 48302</p>
+                        <p style="margin-top:20px">&copy; 2025 ReadiCharge LLC.</p>
+                    </div>
+                    <div class="footer-col"><h4>Company</h4><ul style="list-style:none;"><li><a href="#">About Us</a></li><li><a href="#">Careers</a></li></ul></div>
+                    <div class="footer-col"><h4>Installers</h4><ul style="list-style:none;"><li><a href="#">Join Network</a></li><li><a href="#">Portal</a></li></ul></div>
+                    <div class="footer-col"><h4>Support</h4><ul style="list-style:none;"><li><a href="#">Help Center</a></li><li><a href="#">Contact</a></li></ul></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Customer Modal -->
+    <div id="customerModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('customerModal')">&times;</button>
+            <div class="modal-header">
+                <span class="label">Get Started</span>
+                <h2>Download <span style="color:var(--brand-green)">Customer App</span></h2>
+                <p>Fill out the form below and we'll send you the download link</p>
+            </div>
+            <form class="download-form" id="customerForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customer-name">Full Name *</label>
+                        <input type="text" id="customer-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-phone">Phone Number *</label>
+                        <input type="tel" id="customer-phone" name="phone" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customer-email">Email Address *</label>
+                        <input type="email" id="customer-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-location">Location/City *</label>
+                        <input type="text" id="customer-location" name="location" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit">Get Download Link</button>
+                <div class="form-success">
+                    <p>✓ Success! Check your email for the download link.</p>
+                </div>
+            </form>
         </div>
-    </footer>
+    </div>
+
+    <!-- Installer Modal -->
+    <div id="installerModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('installerModal')">&times;</button>
+            <div class="modal-header">
+                <span class="label">Join Our Network</span>
+                <h2>Download <span class="text-shimmer">Installer App</span></h2>
+                <p>Complete your profile to join the ReadiCharge network</p>
+            </div>
+            <form class="download-form" id="installerForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="installer-name">Full Name *</label>
+                        <input type="text" id="installer-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="installer-phone">Phone Number *</label>
+                        <input type="tel" id="installer-phone" name="phone" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="installer-email">Email Address *</label>
+                        <input type="email" id="installer-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="installer-license">License Number *</label>
+                        <input type="text" id="installer-license" name="license" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="installer-service-area">Service Area *</label>
+                    <input type="text" id="installer-service-area" name="serviceArea" placeholder="e.g., Detroit Metro Area" required>
+                </div>
+                <button type="submit" class="btn-submit">Get Download Link</button>
+                <div class="form-success">
+                    <p>✓ Success! Check your email for the download link and next steps.</p>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <script>
+        // Ensure DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing modals...');
+        });
+        
+        // Modal Functions
+        function openModal(modalId) {
+            console.log('Opening modal:', modalId);
+            try {
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    console.log('Modal opened successfully:', modalId);
+                } else {
+                    console.error('Modal not found:', modalId);
+                }
+            } catch (error) {
+                console.error('Error opening modal:', error);
+            }
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal(this.id);
+                }
+            });
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                    closeModal(modal.id);
+                });
+            }
+        });
+        
+        // Customer Form Handler
+        document.getElementById('customerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            // Here you would typically send data to your backend
+            console.log('Customer Form Data:', Object.fromEntries(formData));
+            
+            // Show success message
+            this.querySelector('.form-success').style.display = 'block';
+            this.reset();
+            
+            // Hide success message and close modal after 3 seconds
+            setTimeout(() => {
+                this.querySelector('.form-success').style.display = 'none';
+                closeModal('customerModal');
+            }, 3000);
+        });
+        
+        // Installer Form Handler
+        document.getElementById('installerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            // Here you would typically send data to your backend
+            console.log('Installer Form Data:', Object.fromEntries(formData));
+            
+            // Show success message
+            this.querySelector('.form-success').style.display = 'block';
+            this.reset();
+            
+            // Hide success message and close modal after 3 seconds
+            setTimeout(() => {
+                this.querySelector('.form-success').style.display = 'none';
+                closeModal('installerModal');
+            }, 3000);
+        });
+
         // Parallax Background
         const parallaxLayers = document.querySelectorAll('.parallax-layer');
         window.addEventListener('scroll', () => {
@@ -547,7 +1272,7 @@
                     body.className = entry.target.getAttribute('data-theme');
                 }
             });
-        }, { threshold: 0.4 });
+        }, { threshold: 0.2, rootMargin: '0px 0px -20% 0px' });
         sections.forEach(section => themeObserver.observe(section));
     </script>
 </body>
