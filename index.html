@@ -349,20 +349,22 @@
         }
         
         .app-preview-image {
-            max-width: 320px;
+            width: 300px;
             height: auto;
-            border-radius: 16px;
-            opacity: 0.12;
-            transform: perspective(800px) rotateY(-15deg) rotateX(8deg) translateX(40px) translateZ(-50px);
+            border-radius: 20px;
+            opacity: 0.18;
+            transform: perspective(1000px) rotateY(-12deg) rotateX(6deg) translateX(25px) translateZ(-35px);
             transition: all 0.6s var(--ease-out);
             pointer-events: none;
-            filter: blur(0.5px);
+            filter: blur(0.3px);
+            box-shadow: 0 25px 50px rgba(16, 26, 77, 0.4);
         }
         
         .bento-card:hover .app-preview-image {
-            opacity: 0.2;
-            transform: perspective(800px) rotateY(-10deg) rotateX(5deg) translateX(20px) translateZ(-30px);
+            opacity: 0.28;
+            transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) translateX(15px) translateZ(-25px);
             filter: blur(0px);
+            box-shadow: 0 30px 60px rgba(16, 26, 77, 0.5);
         }
         
         .app-store-links {
@@ -437,23 +439,29 @@
         }
         
         .modal-content {
-            background: rgba(10, 14, 46, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 2px solid var(--brand-green);
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(160, 216, 66, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 70% 30%, rgba(16, 26, 77, 0.6) 0%, transparent 50%),
+                rgba(6, 6, 30, 0.95);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 2px solid var(--brand-green-alt);
             border-radius: var(--curve);
-            padding: 48px;
-            max-width: 600px;
+            padding: 60px;
+            max-width: 650px;
             width: 90%;
-            max-height: 80vh;
+            max-height: 85vh;
             overflow-y: auto;
             position: fixed;
             top: 50%;
             left: 50%;
             z-index: 100000;
             transform: translate(-50%, -50%) scale(0.9);
-            transition: all 0.3s var(--ease-out);
-            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+            transition: all 0.4s var(--ease-out);
+            box-shadow: 
+                0 50px 100px rgba(16, 26, 77, 0.6),
+                0 0 80px rgba(160, 216, 66, 0.3),
+                inset 0 1px 0 rgba(160, 216, 66, 0.2);
         }
         
         .modal-overlay.active .modal-content {
@@ -464,18 +472,27 @@
         
         .modal-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
+            top: 24px;
+            right: 24px;
+            background: rgba(16, 26, 77, 0.3);
+            border: 1px solid var(--card-border);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--text-dim);
-            font-size: 24px;
+            font-size: 20px;
             cursor: pointer;
-            transition: color 0.2s var(--ease-out);
+            transition: all 0.3s var(--ease-out);
         }
         
         .modal-close:hover {
             color: var(--text-white);
+            background: rgba(160, 216, 66, 0.2);
+            border-color: var(--brand-green-alt);
+            transform: scale(1.1);
         }
         
         .modal-header {
@@ -489,11 +506,12 @@
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             display: inline-block;
-            background: rgba(163, 230, 53, 0.1);
-            padding: 6px 16px;
-            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(160, 216, 66, 0.15) 0%, rgba(150, 210, 50, 0.1) 100%);
+            border: 1px solid rgba(160, 216, 66, 0.3);
+            padding: 8px 20px;
+            border-radius: 25px;
         }
         
         .modal-header h2 {
@@ -693,7 +711,8 @@
         .ev-installation-card-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, var(--brand-green) 0%, #bef264 100%);
+            padding:4px;
+            background: linear-gradient(135deg,#06061e 0%, #1014ad 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -833,9 +852,7 @@
             <div class="container">
                 <div class="ev-installation-card reveal-on-scroll">
                     <div class="ev-installation-card-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                        </svg>
+                        <img src="Readicharge.gif" alt="ReadiCharge Animation" style="width: 100%; height: 100%; object-fit: contain;">
                     </div>
                     <span class="label">Local EV Charging Solutions</span>
                     <h2>EV Charger <span style="color:var(--brand-green)">Installation</span> in <span style="color:var(--brand-green-alt)">[Your Area]</span></h2>
@@ -1076,19 +1093,19 @@
                 <div class="location-grid reveal-on-scroll">
                     <div class="location-card">
                         <h3>Michigan</h3>
-                        <p>Detroit Metro, Ann Arbor, Grand Rapids</p>
+                        <p>Detroit Metro, Ann Arbor, Grand Rapids, and more</p>
                     </div>
                     <div class="location-card">
                         <h3>California</h3>
-                        <p>Los Angeles, San Francisco, San Diego</p>
+                        <p>Los Angeles, San Francisco, San Diego, and more</p>
                     </div>
                     <div class="location-card">
                         <h3>Texas</h3>
-                        <p>Austin, Houston, Dallas</p>
+                        <p>Austin, Houston, Dallas, and more</p>
                     </div>
                     <div class="location-card">
                         <h3>More Coming Soon</h3>
-                        <p>Expanding nationwide in 2025</p>
+                        <p>Expanding nationwide in 2026</p>
                     </div>
                 </div>
             </div>
@@ -1105,7 +1122,7 @@
                             READI<span>CHARGE</span>
                         </div>
                         <p>2510 S Telegraph Rd Ste L263<br>Bloomfield Hills, MI 48302</p>
-                        <p style="margin-top:20px">&copy; 2025 ReadiCharge LLC.</p>
+                        <p style="margin-top:20px">&copy; 2026 ReadiCharge LLC.</p>
                     </div>
                     <div class="footer-col"><h4>Company</h4><ul style="list-style:none;"><li><a href="#">About Us</a></li><li><a href="#">Careers</a></li></ul></div>
                     <div class="footer-col"><h4>Installers</h4><ul style="list-style:none;"><li><a href="#">Join Network</a></li><li><a href="#">Portal</a></li></ul></div>
@@ -1145,7 +1162,7 @@
                         <input type="text" id="customer-location" name="location" required>
                     </div>
                 </div>
-                <button type="submit" class="btn-submit">Get Download Link</button>
+                <button type="submit" class="btn-submit">Send link to my Email</button>
                 <div class="form-success">
                     <p>✓ Success! Check your email for the download link.</p>
                 </div>
@@ -1187,7 +1204,7 @@
                     <label for="installer-service-area">Service Area *</label>
                     <input type="text" id="installer-service-area" name="serviceArea" placeholder="e.g., Detroit Metro Area" required>
                 </div>
-                <button type="submit" class="btn-submit">Get Download Link</button>
+                <button type="submit" class="btn-submit">Send me an Email</button>
                 <div class="form-success">
                     <p>✓ Success! Check your email for the download link and next steps.</p>
                 </div>
