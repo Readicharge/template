@@ -7,13 +7,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --brand-green: #a3e635;
-            --brand-green-hover: #bef264;
-            --bg-color: #06061e;
-            --card-surface: rgba(255, 255, 255, 0.04);
-            --card-border: rgba(255, 255, 255, 0.1);
+            --brand-green: #96d232;
+            --brand-green-alt: #A0D842;
+            --brand-green-bright: #9AD933;
+            --deep-blue: #101A4D;
+            --dark-purple: #040412;
+            --dark-navy: #06061E;
+            --bg-color: #06061E;
+            --card-surface: rgba(16, 26, 77, 0.15);
+            --card-border: rgba(160, 216, 66, 0.3);
             --text-white: #ffffff;
-            --text-dim: #94a3b8;
+            --text-dim: #A0D842;
             --curve: 48px;
             --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
         }
@@ -62,39 +66,50 @@
         /* --- Smooth Professional Background Themes --- */
         body.theme-hero { 
             background: 
-                radial-gradient(circle at 20% 80%, rgba(163, 230, 53, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(163, 230, 53, 0.02) 0%, transparent 50%),
-                linear-gradient(180deg, #06061e 0%, #08081f 100%);
+                radial-gradient(circle at 20% 80%, rgba(150, 210, 50, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(16, 26, 77, 0.8) 0%, transparent 60%),
+                linear-gradient(135deg, #06061E 0%, #101A4D 50%, #040412 100%);
             transition: background 3s cubic-bezier(0.23, 1, 0.32, 1);
         }
         body.theme-light { 
             background: 
-                radial-gradient(circle at 30% 70%, rgba(163, 230, 53, 0.04) 0%, transparent 60%),
-                linear-gradient(135deg, rgba(255, 255, 255, 0.01) 0%, transparent 50%),
-                linear-gradient(180deg, #08081f 0%, #0a0e2e 100%);
+                radial-gradient(circle at 30% 70%, rgba(16, 26, 77, 0.6) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(160, 216, 66, 0.10) 0%, transparent 60%),
+                linear-gradient(135deg, #040412 0%, #101A4D 50%, #06061E 100%);
             transition: background 3s cubic-bezier(0.23, 1, 0.32, 1);
         }
         body.theme-green { 
             background: 
-                radial-gradient(circle at 70% 30%, rgba(163, 230, 53, 0.06) 0%, transparent 50%),
-                radial-gradient(circle at 20% 60%, rgba(163, 230, 53, 0.03) 0%, transparent 70%),
-                linear-gradient(180deg, #0a0e2e 0%, #061b0d 100%);
+                radial-gradient(circle at 70% 30%, rgba(154, 217, 51, 0.20) 0%, transparent 40%),
+                radial-gradient(circle at 20% 60%, rgba(4, 4, 18, 0.8) 0%, transparent 50%),
+                linear-gradient(135deg, #06061E 0%, #101A4D 30%, #040412 70%, #06061E 100%);
             transition: background 3s cubic-bezier(0.23, 1, 0.32, 1);
         }
         body.theme-dark { 
-            background: linear-gradient(180deg, #061b0d 0%, #0b0318 100%);
+            background: 
+                radial-gradient(circle at 60% 80%, rgba(4, 4, 18, 0.9) 0%, transparent 45%),
+                radial-gradient(circle at 40% 20%, rgba(16, 26, 77, 0.4) 0%, transparent 50%),
+                linear-gradient(135deg, #040412 0%, #101A4D 50%, #06061E 100%);
             transition: background 3s cubic-bezier(0.23, 1, 0.32, 1);
         }
         body.theme-about { 
-            background: linear-gradient(180deg, #0b0318 0%, #0a0e2e 100%);
+            background: 
+                radial-gradient(circle at 40% 20%, rgba(16, 26, 77, 0.5) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(160, 216, 66, 0.12) 0%, transparent 60%),
+                linear-gradient(135deg, #040412 0%, #101A4D 50%, #06061E 100%);
             transition: background 3s cubic-bezier(0.23, 1, 0.32, 1);
         }
         body.theme-why { 
-            background: linear-gradient(180deg, #0a0e2e 0%, #061b0d 100%);
+            background: 
+                radial-gradient(circle at 10% 90%, rgba(154, 217, 51, 0.18) 0%, transparent 40%),
+                radial-gradient(circle at 90% 10%, rgba(16, 26, 77, 0.6) 0%, transparent 50%),
+                linear-gradient(135deg, #06061E 0%, #101A4D 50%, #040412 100%);
             transition: background 3s cubic-bezier(0.23, 1, 0.32, 1);
         }
         body.theme-footer { 
-            background: linear-gradient(180deg, #061b0d 0%, #000000 100%);
+            background: 
+                radial-gradient(circle at 50% 0%, rgba(160, 216, 66, 0.08) 0%, transparent 50%),
+                linear-gradient(180deg, #040412 0%, #06061E 100%);
             transition: background 3s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
@@ -205,22 +220,25 @@
         .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
         .bento-card {
             background: 
-                radial-gradient(circle at 80% 20%, rgba(163, 230, 53, 0.02) 0%, transparent 60%),
-                linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(150, 210, 50, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(16, 26, 77, 0.4) 0%, transparent 60%),
                 var(--card-surface);
             border: 1px solid var(--card-border);
             border-radius: var(--curve); padding: 48px; position: relative;
             overflow: visible; display: flex; flex-direction: column; justify-content: space-between;
             transition: all 0.5s var(--ease-out);
+            box-shadow: 0 8px 32px rgba(16, 26, 77, 0.2);
         }
         .bento-card:hover {
             transform: translateY(-8px);
             background: 
-                radial-gradient(circle at 50% 50%, rgba(163, 230, 53, 0.05) 0%, transparent 60%),
-                linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%),
+                radial-gradient(circle at 50% 50%, rgba(154, 217, 51, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(16, 26, 77, 0.6) 0%, transparent 60%),
                 var(--card-surface);
             border-color: var(--brand-green);
-            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+            box-shadow: 
+                0 40px 80px rgba(16, 26, 77, 0.4),
+                0 0 40px rgba(160, 216, 66, 0.3);
         }
         .bento-icon {
             font-size: 2.5rem; margin-bottom: 24px; background: rgba(255,255,255,0.05);
@@ -280,8 +298,8 @@
         /* --- Footer --- */
         footer { 
             padding: 120px 0 60px; 
-            border-top: 1px solid rgba(163, 230, 53, 0.1); 
-            background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+            border-top: 2px solid rgba(160, 216, 66, 0.4); 
+            background: linear-gradient(180deg, #040412 0%, #06061E 100%);
             position: relative;
         }
         
@@ -291,8 +309,13 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, rgba(163, 230, 53, 0.3) 50%, transparent 100%);
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(150, 210, 50, 0.6) 25%, 
+                rgba(160, 216, 66, 0.8) 50%, 
+                rgba(154, 217, 51, 0.6) 75%, 
+                transparent 100%);
         }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; }
         .footer-col h4 { color: #fff; margin-bottom: 24px; font-size: 1rem; font-weight: 600; text-transform: uppercase; }
@@ -581,10 +604,10 @@
         /* --- EV Installation Card --- */
         .ev-installation-card {
             background: 
-                radial-gradient(circle at 30% 70%, rgba(163, 230, 53, 0.04) 0%, transparent 60%),
-                radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
-                linear-gradient(135deg, var(--card-surface) 0%, rgba(255, 255, 255, 0.06) 100%);
-            border: 1px solid var(--card-border);
+                radial-gradient(circle at 30% 70%, rgba(160, 216, 66, 0.10) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(16, 26, 77, 0.5) 0%, transparent 60%),
+                linear-gradient(135deg, var(--card-surface) 0%, rgba(4, 4, 18, 0.3) 100%);
+            border: 2px solid var(--brand-green-alt);
             border-radius: var(--curve);
             padding: 60px;
             max-width: 1100px;
@@ -595,7 +618,9 @@
             overflow: hidden;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 
+                0 20px 40px rgba(16, 26, 77, 0.3),
+                0 0 60px rgba(160, 216, 66, 0.15);
         }
 
         .ev-installation-card::before {
@@ -616,12 +641,15 @@
 
         .ev-installation-card:hover {
             transform: translateY(-12px) scale(1.02);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.18) 100%);
-            border-color: rgba(163, 230, 53, 0.5);
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(154, 217, 51, 0.18) 0%, transparent 40%),
+                radial-gradient(circle at 30% 70%, rgba(16, 26, 77, 0.7) 0%, transparent 50%),
+                linear-gradient(135deg, var(--card-surface) 0%, rgba(4, 4, 18, 0.5) 100%);
+            border-color: var(--brand-green);
             box-shadow: 
-                0 50px 100px rgba(0,0,0,0.7),
-                0 0 0 1px rgba(163, 230, 53, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                0 50px 100px rgba(16, 26, 77, 0.5),
+                0 0 80px rgba(160, 216, 66, 0.4),
+                inset 0 1px 0 rgba(154, 217, 51, 0.3);
         }
 
         .ev-installation-card .label {
@@ -804,9 +832,13 @@
         <section style="padding: 60px 0;" data-theme="theme-hero">
             <div class="container">
                 <div class="ev-installation-card reveal-on-scroll">
-                    <div class="ev-installation-card-icon">⚡</div>
+                    <div class="ev-installation-card-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
                     <span class="label">Local EV Charging Solutions</span>
-                    <h2>EV Charger Installation in <span>[Your Area]</span></h2>
+                    <h2>EV Charger <span style="color:var(--brand-green)">Installation</span> in <span style="color:var(--brand-green-alt)">[Your Area]</span></h2>
                     <p>ReadiCharge provides professional EV charger installation services across multiple markets. Our network of licensed, insured electricians specializes in residential, commercial, and municipal charging infrastructure. Whether you need a Level 2 home charger installation or a comprehensive commercial charging hub, our vetted professionals deliver quality workmanship with transparent pricing. We serve major metropolitan areas and are rapidly expanding to bring reliable EV charging solutions to communities nationwide.</p>
                 </div>
             </div>
@@ -828,8 +860,12 @@
                         </div>
 
                         <div>
-                            <span class="bento-icon">🛡️</span>
-                            <h3 class="bento-title" style="font-size: 2.5rem;">Safety & Quality Assurance.</h3>
+                            <span class="bento-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                                </svg>
+                            </span>
+                            <h3 class="bento-title" style="font-size: 2.5rem;">Safety & Quality <span style="color:var(--brand-green)">Assurance.</span></h3>
                             <p class="bento-text" style="font-size: 1.2rem; margin-top: 20px;">ReadiCharge rigorously vets all electricians. We only deploy licensed, insured, and background-checked professionals.</p>
                             <div style="margin-top: 40px; display: flex; flex-wrap: wrap; gap: 12px;">
                                 <div style="background: rgba(255,255,255,0.1); padding: 8px 20px; border-radius: 100px; font-size:0.9rem;">Verified License</div>
@@ -838,12 +874,24 @@
                         </div>
 
                     </div>
-                    <div class="bento-card reveal-on-scroll delay-100"><div><span class="bento-icon">⏱️</span><h3 class="bento-title">Swift Delivery</h3><p class="bento-text">Installers arrive within 48 hours of booking.</p></div></div>
-                    <div class="bento-card reveal-on-scroll delay-200"><div><span class="bento-icon">📅</span><h3 class="bento-title">Smart Scheduling</h3><p class="bento-text">Choose a time that works best through our app.</p></div></div>
+                    <div class="bento-card reveal-on-scroll delay-100"><div><span class="bento-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/>
+                        </svg>
+                    </span><h3 class="bento-title">Swift Delivery</h3><p class="bento-text">Installers arrive within 48 hours of booking.</p></div></div>
+                    <div class="bento-card reveal-on-scroll delay-200"><div><span class="bento-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                        </svg>
+                    </span><h3 class="bento-title">Smart Scheduling</h3><p class="bento-text">Choose a time that works best through our app.</p></div></div>
                     <div class="bento-card span-2 reveal-on-scroll delay-100">
                         <div style="display: flex; align-items: center; justify-content: space-between;">
                             <div style="max-width: 60%;"><h3 class="bento-title">Intelligent Pairing</h3><p class="bento-text">Automatically matched with specialists for your vehicle.</p></div>
-                            <span class="bento-icon" style="font-size: 3rem; width:100px; height:100px;">🤖</span>
+                            <span class="bento-icon" style="font-size: 3rem; width:100px; height:100px;">
+                                <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2c2.21 0 4 1.79 4 4 0 .89-.29 1.71-.78 2.38C17.33 8.84 19 10.79 19 13.08c0 2.84-2.61 5.16-5.83 5.16S7.33 15.92 7.33 13.08c0-2.29 1.67-4.24 3.78-4.7-.49-.67-.78-1.49-.78-2.38 0-2.21 1.79-4 4-4zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm1.83 12.38c.8 0 1.44-.25 1.44-.56s-.64-.56-1.44-.56-1.44.25-1.44.56.64.56 1.44.56z"/>
+                                </svg>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -860,16 +908,28 @@
                     <p style="color: var(--text-dim); font-size: 1.25rem;">Expand your business with a steady stream of pre-vetted EVSE projects.</p>
                 </div>
                 <div class="bento-grid">
-                    <div class="bento-card reveal-on-scroll"><div><span class="bento-icon">💳</span><h3 class="bento-title">Quick Payments</h3><p class="bento-text">Secure in-app processing. No more invoicing headaches.</p></div></div>
-                    <div class="bento-card reveal-on-scroll delay-100"><div><span class="bento-icon">📈</span><h3 class="bento-title">No Marketing</h3><p class="bento-text">We bring the customers to you. Flow of job requests without ads.</p></div></div>
+                    <div class="bento-card reveal-on-scroll"><div><span class="bento-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+                        </svg>
+                    </span><h3 class="bento-title">Quick Payments</h3><p class="bento-text">Secure in-app processing. No more invoicing headaches.</p></div></div>
+                    <div class="bento-card reveal-on-scroll delay-100"><div><span class="bento-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                        </svg>
+                    </span><h3 class="bento-title">No Marketing</h3><p class="bento-text">We bring the customers to you. Flow of job requests without ads.</p></div></div>
                     <div class="bento-card span-2 row-2 reveal-on-scroll delay-200">
                         <div class="app-download-section">
                             <img src="Installer.webp" alt="ReadiCharge Installer App" class="app-preview-image">
                         </div>
 
                         <div>
-                            <span class="bento-icon">🤝</span>
-                            <h3 class="bento-title" style="font-size: 2.5rem;">Total Flexibility</h3>
+                            <span class="bento-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M11 14H9c0-4.97 4.03-9 9-9v2c-3.87 0-7 3.13-7 7zm7-3V9.5c0-.83-.67-1.5-1.5-1.5S15 8.67 15 9.5V11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1zm-.8 0h-1.4V9.5c0-.44.36-.8.8-.8s.8.36.8.8V11z"/>
+                                </svg>
+                            </span>
+                            <h3 class="bento-title" style="font-size: 2.5rem;">Total <span style="color:var(--brand-green)">Flexibility</span></h3>
                             <p class="bento-text">Set your availability and manage your workload effectively.</p>
                             <ul style="margin-top: 30px; color: var(--text-dim); list-style: none;">
                                 <li style="margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px;">✓ In-app customer messaging</li>
@@ -879,7 +939,11 @@
                         </div>
 
                     </div>
-                    <div class="bento-card span-2 reveal-on-scroll delay-100"><div><span class="bento-icon">📝</span><h3 class="bento-title">Detail Upfront</h3><p class="bento-text">Assess and accept projects with ease based on customer details provided.</p></div></div>
+                    <div class="bento-card span-2 reveal-on-scroll delay-100"><div><span class="bento-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
+                        </svg>
+                    </span><h3 class="bento-title">Detail Upfront</h3><p class="bento-text">Assess and accept projects with ease based on customer details provided.</p></div></div>
                 </div>
             </div>
         </section>
@@ -891,7 +955,7 @@
             <div class="container">
                 <div class="section-header reveal-on-scroll">
                     <span class="label">Our Exclusive Experience</span>
-                    <h2 class="h2-title">Our Exclusive Experience</h2>
+                    <h2 class="h2-title">Our Exclusive <span style="color:var(--brand-green)">Experience</span></h2>
                     <p style="color: var(--text-dim); font-size: 1.25rem; max-width: 800px;">Experience the ReadiCharge difference—where cutting-edge technology meets exceptional service to deliver a seamless EV charging installation journey.</p>
                 </div>
                 <div class="bento-grid">
@@ -931,7 +995,7 @@
             <div class="container">
                 <div class="section-header reveal-on-scroll">
                     <span class="label">Why Customers & Installers Choose Us</span>
-                    <h2 class="h2-title">Trusted by Thousands</h2>
+                    <h2 class="h2-title">Trusted by <span style="color:var(--brand-green)">Thousands</span></h2>
                 </div>
                 <div class="testimonials-carousel reveal-on-scroll">
                     <div class="testimonials-track">
