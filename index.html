@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReadiCharge | EV Charger Installation Simplified</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-green: #a3e635;
+            --brand-green-hover: #bef264;
+            --bg-color: #06061e;
+            --card-surface: rgba(255, 255, 255, 0.04);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-white: #ffffff;
+            --text-dim: #94a3b8;
+            --curve: 48px;
+            --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            perspective: 1200px;
+        }
+        /* --- Dramatic Background Themes --- */
+        body.theme-hero { background-color: #06061e; }
+        body.theme-light { background-color: #0a0e2e; }
+        body.theme-green { background-color: #041a0b; }
+        body.theme-dark { background-color: #0d0216; }
+        /* --- 3D Scroll Perspective Container --- */
+        .scroll-3d-container {
+            transition: transform 0.8s var(--ease-out), opacity 0.8s var(--ease-out);
+            transform-origin: center top;
+            will-change: transform, opacity;
+        }
+        /* --- Animations --- */
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+        }
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        /* --- Global Utilities --- */
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+       
+        .text-gradient {
+            background: linear-gradient(120deg, #fff 40%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-shimmer {
+            background: linear-gradient(90deg, var(--brand-green) 0%, #ffffff 50%, var(--brand-green) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 4s linear infinite;
+            display: inline-block;
+        }
+       
+        .section-header { text-align: center; margin-bottom: 60px; max-width: 900px; margin: 0 auto 60px; }
+        /* --- Navigation --- */
+        nav {
+            position: fixed; top: 24px; left: 0; right: 0;
+            display: flex; justify-content: center; z-index: 1000;
+            pointer-events: none;
+        }
+       
+        .nav-pill {
+            background: rgba(10, 10, 20, 0.7);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            padding: 10px 10px 10px 30px;
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex; align-items: center; justify-content: space-between;
+            pointer-events: auto;
+            min-width: 600px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .logo { font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; color: #fff; letter-spacing: -0.02em; }
+        .nav-links { display: flex; gap: 32px; align-items: center; margin: 0 40px; }
+        .nav-links a { text-decoration: none; color: var(--text-dim); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: #fff; }
+        .btn-nav {
+            background: var(--brand-green); color: #000; padding: 12px 28px;
+            border-radius: 50px; font-weight: 600; text-decoration: none;
+            transition: transform 0.2s var(--ease-out);
+        }
+        .btn-nav:hover { transform: scale(1.05); }
+        /* --- Hero --- */
+        .hero {
+            min-height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            position: relative; overflow: hidden;
+            text-align: center;
+        }
+       
+        .ambient-glow {
+            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 100vw; height: 100vh;
+            background: radial-gradient(circle at 50% 30%, rgba(163, 230, 53, 0.1) 0%, rgba(6, 6, 30, 0) 50%);
+            z-index: 1; pointer-events: none;
+        }
+        .hero h1 { font-size: clamp(3.5rem, 9vw, 6.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 30px; }
+        .hero p { font-size: 1.35rem; color: var(--text-dim); max-width: 680px; margin: 0 auto 50px; font-weight: 300; }
+        .hero-btns { display: flex; gap: 16px; justify-content: center; }
+        /* --- Sections --- */
+        .section-padding { padding: 120px 0; position: relative; } /* Reduced from 180px */
+        .label {
+            color: var(--brand-green); font-weight: 700; font-size: 0.9rem; text-transform: uppercase;
+            letter-spacing: 0.05em; margin-bottom: 24px; display: inline-block;
+            background: rgba(163, 230, 53, 0.1); padding: 6px 16px; border-radius: 20px;
+        }
+       
+        .h2-title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 24px; }
+        .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .bento-card {
+            background: var(--card-surface); border: 1px solid var(--card-border);
+            border-radius: var(--curve); padding: 48px; position: relative;
+            overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;
+            transition: all 0.5s var(--ease-out);
+        }
+        .bento-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--brand-green);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+        }
+        .bento-icon {
+            font-size: 2.5rem; margin-bottom: 24px; background: rgba(255,255,255,0.05);
+            width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; transition: 0.4s var(--ease-out);
+        }
+        .bento-card:hover .bento-icon { transform: scale(1.1) rotate(5deg); }
+        .bento-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 12px; color: #fff; letter-spacing: -0.02em; }
+        .bento-text { color: var(--text-dim); font-size: 1.05rem; line-height: 1.6; }
+        .span-2 { grid-column: span 2; }
+        .row-2 { grid-row: span 2; min-height: 600px; }
+        /* --- Footer --- */
+        footer { padding: 100px 0 60px; border-top: 1px solid rgba(255,255,255,0.05); background: #000; } /* Slightly reduced top padding */
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; }
+        .footer-col h4 { color: #fff; margin-bottom: 24px; font-size: 1rem; font-weight: 600; text-transform: uppercase; }
+        .footer-col a { text-decoration: none; color: var(--text-dim); transition: 0.2s; font-size: 0.95rem; }
+        .footer-col a:hover { color: var(--brand-green); }
+        @media (max-width: 1024px) {
+            .bento-grid { grid-template-columns: 1fr 1fr; }
+            .span-2 { grid-column: span 2; }
+            .nav-pill { min-width: auto; width: 90%; }
+            .nav-links { display: none; }
+            .section-padding { padding: 100px 0; }
+        }
+    </style>
+</head>
+<body class="theme-hero">
+    <nav>
+        <div class="nav-pill">
+            <div class="logo">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brand-green)"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                READI<span>CHARGE</span>
+            </div>
+            <div class="nav-links">
+                <a href="#customers">Customers</a>
+                <a href="#installers">Installers</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+            </div>
+            <a href="#contact" class="btn-nav">Get Started</a>
+        </div>
+    </nav>
+    <div class="ambient-glow"></div>
+    <div class="scroll-3d-container">
+        <section class="hero" data-theme="theme-hero">
+            <div class="container reveal-on-scroll active">
+                <span class="label">The ReadiCharge Platform</span>
+                <h1 class="text-gradient">Precision EV <br><span class="text-shimmer">Infrastructure.</span></h1>
+                <p>Connect with vetted, licensed electricians for your EV charger installation. From residential garages to municipal fleets, we power the transition.</p>
+                <div class="hero-btns">
+                    <a href="#customers" class="btn-nav" style="padding: 16px 36px;">Find an Installer</a>
+                    <a href="#installers" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 16px 36px; border-radius: 50px; text-decoration: none;">Join Network</a>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="scroll-3d-container">
+        <section class="section-padding" id="customers" data-theme="theme-light">
+            <div class="container">
+                <div class="section-header reveal-on-scroll">
+                    <span class="label">For EV Owners</span>
+                    <h2 class="h2-title">Hassle-free <span style="color:var(--brand-green)">Charger Setup.</span></h2>
+                    <p style="color: var(--text-dim); font-size: 1.25rem;">Say goodbye to the stress of finding reliable electricians. We connect you with pros who specialize in EVSE installation.</p>
+                </div>
+                <div class="bento-grid">
+                    <div class="bento-card span-2 row-2 reveal-on-scroll">
+                        <div>
+                            <span class="bento-icon">🛡️</span>
+                            <h3 class="bento-title" style="font-size: 2.5rem;">Safety & Quality Assurance.</h3>
+                            <p class="bento-text" style="font-size: 1.2rem; margin-top: 20px;">ReadiCharge rigorously vets all electricians. We only deploy licensed, insured, and background-checked professionals.</p>
+                            <div style="margin-top: 40px; display: flex; flex-wrap: wrap; gap: 12px;">
+                                 <div style="background: rgba(255,255,255,0.1); padding: 8px 20px; border-radius: 100px; font-size:0.9rem;">Verified License</div>
+                                 <div style="background: rgba(255,255,255,0.1); padding: 8px 20px; border-radius: 100px; font-size:0.9rem;">Insured</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-card reveal-on-scroll delay-100"><div><span class="bento-icon">⏱️</span><h3 class="bento-title">Swift Delivery</h3><p class="bento-text">Installers arrive within 48 hours of booking.</p></div></div>
+                    <div class="bento-card reveal-on-scroll delay-200"><div><span class="bento-icon">📅</span><h3 class="bento-title">Smart Scheduling</h3><p class="bento-text">Choose a time that works best through our app.</p></div></div>
+                    <div class="bento-card span-2 reveal-on-scroll delay-100">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div style="max-width: 60%;"><h3 class="bento-title">Intelligent Pairing</h3><p class="bento-text">Automatically matched with specialists for your vehicle.</p></div>
+                            <span class="bento-icon" style="font-size: 3rem; width:100px; height:100px;">🤖</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="scroll-3d-container">
+        <section class="section-padding" id="installers" data-theme="theme-green">
+            <div class="container">
+                <div class="section-header reveal-on-scroll">
+                    <span class="label">For Electricians</span>
+                    <h2 class="h2-title">Steady Jobs. <span class="text-shimmer">Quick Pay.</span></h2>
+                    <p style="color: var(--text-dim); font-size: 1.25rem;">Expand your business with a steady stream of pre-vetted EVSE projects.</p>
+                </div>
+                <div class="bento-grid">
+                    <div class="bento-card reveal-on-scroll"><div><span class="bento-icon">💳</span><h3 class="bento-title">Quick Payments</h3><p class="bento-text">Secure in-app processing. No more invoicing headaches.</p></div></div>
+                    <div class="bento-card reveal-on-scroll delay-100"><div><span class="bento-icon">📈</span><h3 class="bento-title">No Marketing</h3><p class="bento-text">We bring the customers to you. Flow of job requests without ads.</p></div></div>
+                    <div class="bento-card span-2 row-2 reveal-on-scroll delay-200">
+                        <div>
+                            <span class="bento-icon">🤝</span>
+                            <h3 class="bento-title" style="font-size: 2.5rem;">Total Flexibility</h3>
+                            <p class="bento-text">Set your availability and manage your workload effectively.</p>
+                            <ul style="margin-top: 30px; color: var(--text-dim); list-style: none;">
+                                <li style="margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px;">✓ In-app customer messaging</li>
+                                <li style="margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px;">✓ Dedicated tech support</li>
+                                <li>✓ Predictable workflow</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bento-card span-2 reveal-on-scroll delay-100"><div><span class="bento-icon">📝</span><h3 class="bento-title">Detail Upfront</h3><p class="bento-text">Assess and accept projects with ease based on customer details provided.</p></div></div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="scroll-3d-container">
+        <section class="section-padding" id="about" data-theme="theme-hero">
+            <div class="container">
+                <div class="section-header reveal-on-scroll">
+                    <span class="label">About Us</span>
+                    <h2 class="h2-title">Mission Driven.</h2>
+                </div>
+                <div class="bento-grid">
+                    <div class="bento-card span-2 reveal-on-scroll"><div><h3 class="bento-title">Our Vision</h3><p class="bento-text">Building the grid of tomorrow by empowering local electricians today.</p></div></div>
+                    <div class="bento-card span-2 reveal-on-scroll delay-100"><div><h3 class="bento-title">Specialization</h3><p class="bento-text">Exclusively focused on EVSE ensuring higher safety standards.</p></div></div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="scroll-3d-container">
+        <section class="section-padding" id="services" data-theme="theme-dark">
+            <div class="container">
+                <div class="section-header reveal-on-scroll">
+                    <span class="label">Our Expertise</span>
+                    <h2 class="h2-title">Solutions for <span style="color:var(--brand-green)">Every Sector.</span></h2>
+                </div>
+                <div class="bento-grid">
+                    <div class="bento-card reveal-on-scroll"><div><h3 class="bento-title">Residential</h3><p class="bento-text">Level 2 home installations and permitting.</p></div></div>
+                    <div class="bento-card reveal-on-scroll delay-100"><div><h3 class="bento-title">Commercial</h3><p class="bento-text">Charging hubs for malls and retail centers.</p></div></div>
+                    <div class="bento-card reveal-on-scroll delay-200"><div><h3 class="bento-title">Municipal</h3><p class="bento-text">Public infrastructure for cities and parks.</p></div></div>
+                    <div class="bento-card reveal-on-scroll delay-300"><div><h3 class="bento-title">Fleet</h3><p class="bento-text">Solutions for electric delivery logistics.</p></div></div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 25px;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brand-green)" style="margin-right:8px;"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                        READI<span>CHARGE</span>
+                    </div>
+                    <p>2510 S Telegraph Rd Ste L263<br>Bloomfield Hills, MI 48302</p>
+                    <p style="margin-top:20px">&copy; 2025 ReadiCharge LLC.</p>
+                </div>
+                <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Careers</a></li></ul></div>
+                <div class="footer-col"><h4>Installers</h4><ul><li><a href="#">Join Network</a></li><li><a href="#">Portal</a></li></ul></div>
+                <div class="footer-col"><h4>Support</h4><ul><li><a href="#">Help Center</a></li><li><a href="#">Contact</a></li></ul></div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // --- 1. IMPROVED 3D SCROLL PERSPECTIVE LOGIC ---
+        const scrollContainers = document.querySelectorAll('.scroll-3d-container');
+        window.addEventListener('scroll', () => {
+            const windowHeight = window.innerHeight;
+            scrollContainers.forEach((container) => {
+                const rect = container.getBoundingClientRect();
+                const containerTop = rect.top;
+                const containerHeight = rect.height;
+
+                // Only trigger fade/tilt when the section is exiting through the TOP of the viewport
+                if (containerTop < 0) {
+                    // How far the top of the section has moved past the top of the viewport
+                    const distancePastTop = Math.abs(containerTop);
+
+                    // Start fading only when we've scrolled almost the full height of the previous content
+                    // We use a threshold: fade starts when distancePastTop > (windowHeight * 0.9)
+                    const fadeStartThreshold = windowHeight * 0.9;
+                    let fadeProgress = 0;
+
+                    if (distancePastTop > fadeStartThreshold) {
+                        fadeProgress = Math.min((distancePastTop - fadeStartThreshold) / (containerHeight * 0.6), 1);
+                    }
+
+                    // Stronger 3D effect: more rotation, subtle scale, and parallax translateY
+                    const rotateX = fadeProgress * 18;        // Increased tilt
+                    const scale = 1 - (fadeProgress * 0.15);   // Slightly more shrink
+                    const translateY = fadeProgress * -60;     // Pull upward as it fades
+
+                    container.style.transform = `rotateX(${rotateX}deg) scale(${scale}) translateY(${translateY}px)`;
+                    container.style.opacity = 1 - fadeProgress * 1.2; // Faster fade once it starts
+                } else {
+                    // Fully visible or below viewport
+                    container.style.transform = `rotateX(0deg) scale(1) translateY(0px)`;
+                    container.style.opacity = 1;
+                }
+            });
+        });
+
+        // --- 2. REVEAL OBSERVER ---
+        const revealElements = document.querySelectorAll('.reveal-on-scroll');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.15 }); // Lowered threshold for earlier reveal
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // --- 3. DYNAMIC COLOR SHIFT ---
+        const body = document.body;
+        const sections = document.querySelectorAll('section[data-theme]');
+        const themeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    body.className = entry.target.getAttribute('data-theme');
+                }
+            });
+        }, { threshold: 0.4 });
+        sections.forEach(section => themeObserver.observe(section));
+    </script>
+</body>
+</html>
